@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = OmniauthService::VERSION
   spec.authors       = ["Skip Baney"]
   spec.email         = ["skip@voxmedia.com"]
-  spec.description   = %q{TODO: Utility service for managing omniauth providers in an application.}
-  spec.summary       = %q{TODO: Utility service for managing omniauth providers in an application.}
+  spec.description   = %q{Utility service for managing omniauth providers in an application.}
+  spec.summary       = %q{Utility service for managing omniauth providers in an application.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
