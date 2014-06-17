@@ -20,6 +20,8 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+See example [in Banana Stand](https://github.com/voxmedia/banana_stand/blob/master/app/controllers/sessions_controller.rb).
+
 ## Contributing
 
 1. Fork it
