@@ -117,12 +117,19 @@ describe OmniauthService do
   end
 
   it "validating google_oauth2" do
+    # whitelist some domains
+    OmniauthService.configuration.valid_google_domains = ["voxmedia.com", "sbnation.com"]
     OmniauthService.validate!('provider' => 'google_oauth2', 'info' => { 'email' => "personcat@voxmedia.com" })
     OmniauthService.validate!('provider' => 'google_oauth2', 'info' => { 'email' => "personcat@sbnation.com" })
-    OmniauthService.validate!('provider' => 'google_oauth2', 'info' => { 'email' => "personcat@theverge.com" })
-    OmniauthService.validate!('provider' => 'google_oauth2', 'info' => { 'email' => "personcat@polygon.com"  })
+    # ensure that whitelist really works...
     assert_raises(OmniauthService::AuthorizationError) {
       OmniauthService.validate!('provider' => 'google_oauth2', 'info' => { 'email' => "personcat@evil.com" })
+    }
+    assert_raises(OmniauthService::AuthorizationError) {
+      OmniauthService.validate!('provider' => 'google_oauth2', 'info' => { 'email' => "personcat@evil-voxmedia.com" })
+    }
+    assert_raises(OmniauthService::AuthorizationError) {
+      OmniauthService.validate!('provider' => 'google_oauth2', 'info' => { 'email' => "personcat@voxmedia.ru" })
     }
   end
 

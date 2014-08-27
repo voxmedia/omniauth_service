@@ -7,11 +7,8 @@ module OmniauthService
 
     def valid?
       email = omniauth['info'] && omniauth['info']['email']
-      return email.to_s.end_with?(*valid_domains)
-    end
-
-    def valid_domains
-      ["voxmedia.com", "sbnation.com", "theverge.com", "polygon.com"]
+      substrings = OmniauthService.configuration.valid_google_domains.map { |domain| "@#{domain}" }
+      return email.to_s.end_with?(*substrings)
     end
 
   end

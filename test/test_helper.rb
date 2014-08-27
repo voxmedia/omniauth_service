@@ -21,4 +21,5 @@ OmniauthService.configure do |config|
       :full_name  => omniauth["info"]["name"]
     }
   }
+  config.valid_google_domains = ["voxmedia.com"]
 end
